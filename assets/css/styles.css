@@ -80,6 +80,7 @@ button {
 body {
   background-color: var(--body-color);
   color: var(--text-color);
+  transition: background .4s; /* For dark mode animation */
 }
 
 h1, h2, h3, h4 {
@@ -101,16 +102,62 @@ img {
 }
 
 /*=============== THEME ===============*/
+.nav__buttons{
+  display: flex;
+  align-items: center;
+  column-gap: 1.25rem;
+}
 
+.change-theme{
+  font-size: 1.5rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
 
 /*========== Variables Dark theme ==========*/
-
+body.dark-theme{
+  --title-color: hsl(260, 64%, 85%);
+  --text-color: hsl(260, 20%, 65%);
+  --body-color: hsl(260, 64%, 10%);
+  --container-color: hsl(260, 32%, 24%);
+}
 
 /*========== 
 	Color changes in some parts of 
 	the website, in dark theme
 ==========*/
+.dark-theme .blur-header::after,
+.dark-theme .nav__menu{
+  background-color: hsl(0, 0%, 10%, .3);
+}
 
+.dark-theme .list__blob{
+  background-color: var(--container-color);
+}
+
+.dark-theme :is(.follow__content-1, .follow__content-2) img{
+  border: 5px solid var(--container-color);
+}
+
+.dark-theme .join__input{
+  color: hsl(260, 80%, 18%);
+}
+
+.dark-theme .footer{
+  background-color: var(--body-color);
+}
+
+.dark-theme::-webkit-scrollbar{
+  background-color: hsl(260, 32%, 15%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb{
+  background-color: hsl(260, 16%, 25%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(260, 16%, 35%);
+}
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
@@ -146,6 +193,7 @@ img {
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
+  transition: background .4s; /* For dark mode animation */
 }
 
 .nav{
@@ -230,7 +278,11 @@ img {
 }
 
 /* Active link */
-
+.active-link{
+  background: var(--gradient-color);
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
 /*=============== HOME ===============*/
 .home__container{
@@ -355,6 +407,7 @@ img {
   border-radius: 12.5rem;
   justify-content: center;
   align-items: center;
+  transition: background .4s; /* For dark mode animation */
 }
 
 .list__blob img{
@@ -431,6 +484,7 @@ img {
   align-items: center;
   column-gap: .5rem;
   position: absolute;
+  transition: background .4s; /* For dark mode animation */
 }
 
 .health__icon{
@@ -501,6 +555,7 @@ img {
   top: 0;
   left: 0;
   z-index: 1;
+  transition: border .4s; /* For dark mode animation */
 }
 
 .routine__img-2{
@@ -519,6 +574,7 @@ img {
   display: flex;
   align-items: center;
   column-gap: .5rem;
+  transition: background .4s; /* For dark mode animation */
 }
 
 .routine__icon,
@@ -573,6 +629,7 @@ img {
 .follow__content-2 img{
   border-radius: 12.5rem;
   border: 5px solid var(--first-color-light);
+  transition: border .4s; /* For dark mode animation */
 }
 
 .follow__content-1{
@@ -613,19 +670,165 @@ img {
 }
 
 /*=============== JOIN ===============*/
+.join__container{
+  padding-bottom: 2rem;
+}
 
+.join__content{
+  display: grid;
+  row-gap: 1.5rem;
+  background: var(--gradient-color);
+  padding: 3rem 1rem 2.5rem;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+.join__title,
+.join__description{
+  color: var(--white-color);
+}
+
+.join__title{
+  font-size: var(--big-font-size);
+  font-family: var(--second-font);
+  margin-bottom: .75rem;
+}
+
+.join__input,
+.join__button{
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+.join__input{
+  padding: 1.5rem;
+  border-radius: 3rem;
+  margin-bottom: .75rem;
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+}
+
+.join__input::placeholder{
+  color: var(--text-color-light);
+}
+
+.join__button{
+  justify-content: center;
+  box-shadow: 0 4px 12px hsl(260, 100%, 52%, .3);
+  padding-block: 1.25rem;
+  cursor: pointer;
+}
 
 /*=============== FOOTER ===============*/
+.footer{
+  background-color: var(--first-color-dark);
+  color: var(--text-color-light);
+  padding-block: 3rem 2rem;
+}
 
+.footer__container,
+.footer__content,
+.footer__data{
+  row-gap: 2.5rem;
+}
+
+.footer__content{
+  border-bottom: 1px solid var(--text-color-light);
+  padding-bottom: 2.5em;
+}
+
+.footer__logo,
+.footer__social-link{
+  background: var(--gradient-color);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.footer__logo,
+.footer__title{
+  font-size: var(--h2-font-size);
+  font-family: var(--second-font);
+  margin-bottom: 1.25rem;
+}
+
+.footer__logo{
+  display: inline-block;
+  font-weight: var(--font-medium);
+}
+
+.footer__title{
+  color: var(--white-color);
+}
+
+.footer__social,
+.footer__social-link,
+.footer__group{
+  display: flex;
+}
+
+.footer__group{
+  flex-direction: column;
+  row-gap: 2.5rem;
+  align-items: center;
+}
+
+.footer__social{
+  column-gap: 1.25rem;
+}
+
+.footer__social-link{
+  font-size: 1.5rem;
+  transition: transform .4s;
+}
+
+.footer__social-link:hover{
+  transform: translateY(-.25rem);
+}
+
+.footer_copy{
+  font-size: var(--smaller-font-size);
+}
 
 /*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar{
+  width: 0.6rem;
+  border-radius: .5rem;
+  background-color: hsl(260, 16%, 75%);
+}
 
+::-webkit-scrollbar-thumb{
+  border-radius: .5rem;
+  background-color: hsl(260, 16%, 65%);
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(260, 16%, 55%);
+}
 
 /*=============== SCROLL UP ===============*/
+.scrollup{
+  position: fixed;
+  right: 1rem;
+  bottom: -50%;
+  background: var(--gradient-color);
+  display: inline-flex;
+  padding: 6px;
+  font-size: 1.25rem;
+  color: var(--white-color);
+  border-radius: 50%;
+  z-index: var(--z-tooltip);
+  transition: bottom .4s, transform .4s;
+}
 
+.scrollup:hover{
+  transform: translateY(-.25rem);
+}
 
 /* Show Scroll Up */
-
+.show-scroll{
+  bottom: 3rem;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
