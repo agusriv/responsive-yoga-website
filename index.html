@@ -265,13 +265,15 @@
                      </p>
                   </div>
 
-                  <form action="" class="join__form">
-                     <input type="email" placeholder="For latest update send mail" class="join__input">
+                  <form action="" class="join__form" id="contact-form">
+                     <input type="email" name="user_email" placeholder="For latest update send mail" class="join__input" id="contact-user">
 
-                     <button class="button join__button">
+                     <button type="submit" class="button join__button">
                         Subscribe <i class="ri-arrow-right-line"></i>
                      </button>
                   </form>
+
+                  <p class="footer__message" id="contact-message"></p>
                </div>
             </div>
          </section>
@@ -359,6 +361,9 @@
       <a href="#" class="scrollup" id="scroll-up">
          <i class="ri-arrow-up-line"></i>
       </a>
+
+      <!--=============== EMAIL JS ===============-->
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
       <!--=============== SCROLLREVEAL ===============-->
       <script src="assets/js/scrollreveal.min.js"></script>
